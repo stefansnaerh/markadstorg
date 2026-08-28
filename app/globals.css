@@ -1,26 +1,350 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* ============================================================
+     FONTS
+     ============================================================ */
+  --font-headline: var(--font-headline);
+  --font-body: var(--font-body);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* ============================================================
+     COLORS
+     ============================================================ */
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-background-grey: #fafaf7;
+  --color-background-beige: #f8f5ed;
+  --color-background-light-blue: #f2faf6;
+  --color-background-dark: #020618;
+  --color-headline-color: #101320;
+  --color-body-grey: #5a5658;
+  --color-body-grey-dark: #afafaf;
+  --color-grey-input: #bababa;
+  --color-input-bg: #3b3b3b;
+  --color-grey-light: #fafafa;
+  --color-grey: #c5c5c5;
+  --color-grey-darker: #7e7e7e;
+  --color-white: #fdfdfd;
+  --color-pureWhite: #ffffff;
+  --color-soft-beige: #ede8dc;
+  --color-black: #434343;
+  --color-pure-black: #000000;
+  --color-soft-green: #eef7f2;
+  --color-primary: #1e233a;
+  --color-secondary: #f28900;
+  --color-secondary-brighter: #ffa735;
+  --color-soft-blue: #eaf2f8;
+  --color-soft-red: #ffcccc;
+  --color-navy: #1c254e;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-button-primary: #33675b;
+  --color-button-primary-hover: #33675b;
+  --color-button-primary-text: #ffffff;
+  --color-button-secondary: #1e233a;
+  --color-button-secondary-text: #000000;
+
+  /* ============================================================
+     LETTER SPACING
+     ============================================================ */
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.01em;
+  --tracking-xwide: 0.02em;
+
+  /* ============================================================
+     FONT SIZES
+     Using clamp — base 10px (62.5%), min viewport 380px, max 1728px
+     ============================================================ */
+  --text-sm: clamp(1.4rem, 1.341rem + 0.15vw, 1.6rem);
+  --text-md: clamp(1.6rem, 1.541rem + 0.15vw, 1.8rem);
+  --text-lg: clamp(2rem, 1.882rem + 0.3vw, 2.4rem);
+  --text-h1: clamp(4rem, 2.705rem + 3.296vw, 8.4rem);
+  --text-h2: clamp(3.2rem, 2.493rem + 1.798vw, 5.6rem);
+  --text-h3: clamp(2.4rem, 1.87rem + 1.348vw, 4.2rem);
+  --text-h4: clamp(3.2rem, 2.022rem + 2.996vw, 6.4rem);
+  --text-h5: clamp(2rem, 1.882rem + 0.3vw, 2.4rem);
+  --text-h6: clamp(2.4rem, 2.164rem + 0.599vw, 3.2rem);
+
+  /* ============================================================
+     FONT WEIGHTS
+     ============================================================ */
+  --font-weight-semi-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  /* ============================================================
+     BREAKPOINTS
+     ============================================================ */
+  --breakpoint-xxs: 480px;
+  --breakpoint-xs: 640px;
+  --breakpoint-sm: 768px;
+  --breakpoint-smmd: 918px;
+  --breakpoint-md: 1059px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-lg2: 1424px;
+  --breakpoint-xl: 1664px;
+  --breakpoint-xxl: 1920px;
+  --breakpoint-xxxl: 2000px;
+
+  /* ============================================================
+     BORDER RADIUS
+     ============================================================ */
+  --radius-0: 0px;
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-24: 24px;
+  --radius-32: 32px;
+  --radius-full: 100%;
+
+  /* ============================================================
+     BOX SHADOW
+     ============================================================ */
+  --shadow-button: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+  --shadow-nav: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  --shadow-header: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  /* ============================================================
+     SPACING — fixed
+     ============================================================ */
+  --spacing-0: 0px;
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-6: 6px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-18: 18px;
+  --spacing-20: 20px;
+  --spacing-22: 22px;
+  --spacing-24: 24px;
+  --spacing-26: 26px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-72: 72px;
+  --spacing-80: 80px;
+  --spacing-88: 88px;
+  --spacing-96: 96px;
+  --spacing-104: 104px;
+  --spacing-112: 112px;
+  --spacing-120: 120px;
+  --spacing-128: 128px;
+  --spacing-240: 240px;
+  --spacing-fill: 100%;
+
+  /* ============================================================
+     SPACING — fluid (clamp)
+     ============================================================ */
+  --spacing-fluid-8: clamp(8px, 0.46vw, 10px);
+  --spacing-fluid-12: clamp(10px, 0.76vw, 12px);
+  --spacing-fluid-16: clamp(12px, 0.9vw, 16px);
+  --spacing-fluid-18: clamp(16px, 0.9vw, 18px);
+  --spacing-fluid-24: clamp(18px, 1.4vw, 24px);
+  --spacing-fluid-32: clamp(24px, 1.85vw, 32px);
+  --spacing-fluid-40: clamp(32px, 2.31vw, 40px);
+  --spacing-fluid-48: clamp(32px, 2.8vw, 48px);
+  --spacing-fluid-56: clamp(48px, 3.2vw, 56px);
+  --spacing-fluid-64: clamp(56px, 3.7vw, 64px);
+  --spacing-fluid-72: clamp(56px, 4.17vw, 72px);
+  --spacing-fluid-80: clamp(64px, 4.6vw, 80px);
+  --spacing-fluid-96: clamp(80px, 5.5vw, 96px);
+  --spacing-fluid-122: clamp(96px, 6.5vw, 122px);
+  --spacing-fluid-144: clamp(6.4rem, 4.045rem + 5.993vw, 14.4rem);
+  --spacing-fluid-192: clamp(128px, 11.11vw, 192px);
+  --spacing-fluid-324: clamp(256px, 18.75vw, 324px);
+  --spacing-fluid-384: clamp(266px, 22.22vw, 384px);
+  --spacing-fluid-608: clamp(444px, 35.18vw, 608px);
+  --spacing-main-container: clamp(1.6rem, 0.264rem + 3.096vw, 5.6rem);
+  --spacing-main-container-wider: clamp(2.4rem, 0.516rem + 4.794vw, 8.8rem);
+  --spacing-container-more-padding: clamp(1.6rem, -3.817rem + 13.783vw, 20rem);
+
+  /* ============================================================
+     SCALE
+     ============================================================ */
+  --scale-102: 1.02;
+  --scale-105: 1.05;
+
+  /* ============================================================
+     ANIMATIONS
+     ============================================================ */
+  --animate-image-fade: imageFade 1s ease-in-out;
+
+  @keyframes imageFade {
+    0% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+select {
+  -webkit-appearance: none;
+}
+
+@layer base {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    background-size: cover;
+  }
+
+  html {
+    min-width: 280px;
+    font-size: 62.5%; /* 1rem = 10px, so 1.6rem = 16px */
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+  }
+
+  body {
+    font-size: var(--text-paragraph);
+    background-color: var(--color-background-grey);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  main {
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-size: var(--text-h1);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: var(--text-h2);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  h3 {
+    font-size: var(--text-h3);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  h4 {
+    font-size: var(--text-h4);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  h5 {
+    font-size: var(--text-h5);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  h6 {
+    font-size: var(--text-h6);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-size: var(--text-paragraph);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.38;
+  }
+  .gallery {
+    display: grid;
+    gap: 16px;
+
+    /* This makes items flow into rows automatically */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  input {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-input);
+    padding-inline: var(--spacing-6);
+    font-family: var(--font-body);
+    height: 40px;
+    border-radius: var(--radius-6);
+  }
+
+  select {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-input);
+
+    background-repeat: no-repeat;
+    background-position: right;
+    font-family: var(--font-body);
+    height: 36px;
+    border-radius: var(--radius-6);
+  }
+
+  textarea {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-input);
+    padding: var(--spacing-6);
+    resize: none;
+    font-family: var(--font-body);
+    height: 120px;
+    border-radius: var(--radius-6);
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+@utility scroll-freeze {
+  overflow: hidden;
+  width: 100vw;
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes growWidth {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
