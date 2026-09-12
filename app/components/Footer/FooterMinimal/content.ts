@@ -1,6 +1,6 @@
 export const footerMinimal = {
   brandName: "Markaðstorg",
-  phone: { label: "Sími:", value: "555 1234", href: "tel:5551234" },
+  phone: { label: "Sími:", value: "547-1090", href: "tel:5471090" },
   email: {
     value: "birkir@mtorg.is",
     href: "mailto:birkir@mtorg.is",

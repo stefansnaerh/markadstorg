@@ -3,6 +3,7 @@ import { useState } from "react";
 import cx from "classnames";
 import Link from "next/link";
 import { header } from "../content";
+import Button from "../../Buttons/ButtonPrimary";
 export default function MobileNav({
   setIsMobileNavOpen,
 }: {
@@ -74,6 +75,14 @@ export default function MobileNav({
               </Link>
             </li>
           ))}
+          <Button
+            text={header.cta.label}
+            href={header.cta.href}
+            ariaLabel={`Hlekkur til að hafa samband`}
+            type="link"
+            onClick={handleNavClick}
+            className="bg-primary text-md hover:bg-navy/85 text-pureWhite font-medium transition-all duration-300 ease-in-out"
+          />
         </ul>
         {/* <Link
           onClick={handleNavClick}

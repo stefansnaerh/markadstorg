@@ -1,7 +1,7 @@
 export const contactBasic = {
   headline: "Hafðu samband",
   subheading: "Sendu okkur línu og við svörum eins fljótt og hægt er.",
-  phone: { label: "Sími:", value: "555 1234", href: "tel:5551234" },
+  phone: { label: "Sími:", value: "547-1090", href: "tel:5471090" },
   email: {
     label: "Netfang:",
     value: "birkir@mtorg.is",
