@@ -4,15 +4,49 @@ import { FormEvent } from "react";
 import Container from "@/app/components/Container/container";
 import { FadeIn } from "@/app/components/FadeIn/fadeIn";
 import { contactBasic as contact } from "./content";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const FIELD_CLASSES =
   "bg-transparent border border-pureWhite/20 text-pureWhite placeholder:text-pureWhite/40 text-md";
 
 export default function ContactBasic() {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
+  const [status, setStatus] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
+  const router = useRouter();
+
+  const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      setStatus("pending");
+      setError(null);
+      const myForm = event.target as HTMLFormElement;
+      const formData = new FormData(myForm);
+
+      // Create URLSearchParams by iterating over FormData and appending each key-value pair
+      const formDataParams = new URLSearchParams();
+      formData.forEach((value, key) => {
+        formDataParams.append(key, value.toString());
+      });
+      const res = await fetch("/form_almennt.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formDataParams,
+      });
+
+      if (res.status === 200) {
+        setStatus("ok");
+        router.push("/form-success");
+      } else {
+        setStatus("error");
+        setError(`${res.status} ${res.statusText}`);
+      }
+    } catch (e) {
+      setStatus("error");
+      setError(`${e}`);
+    }
+  };
   return (
     <div id="hafa-samband" className="bg-primary">
       <Container>
@@ -57,20 +91,24 @@ export default function ContactBasic() {
 
           <FadeIn delay={0.2}>
             <form
-              onSubmit={handleSubmit}
+              name="mtorg"
+              data-netlify="true"
+              onSubmit={handleFormSubmit}
               className="flex flex-col gap-fluid-24"
             >
+              <input type="hidden" name="form-name" value="mtorg" />
               <div className="flex flex-col gap-fluid-8">
                 <label
-                  htmlFor="name"
+                  htmlFor="nafn"
                   className="text-sm font-semi-bold font-body text-pureWhite"
                 >
                   {contact.form.nameLabel}
                 </label>
                 <input
                   id="name"
-                  name="name"
+                  name="nafn"
                   type="text"
+                  required
                   className={FIELD_CLASSES}
                 />
               </div>
@@ -85,6 +123,7 @@ export default function ContactBasic() {
                   id="email"
                   name="email"
                   type="email"
+                  required
                   className={FIELD_CLASSES}
                 />
               </div>
@@ -97,8 +136,9 @@ export default function ContactBasic() {
                 </label>
                 <input
                   id="phone"
-                  name="phone"
+                  name="simanumer"
                   type="tel"
+                  required
                   className={FIELD_CLASSES}
                 />
               </div>
@@ -110,8 +150,9 @@ export default function ContactBasic() {
                   {contact.form.messageLabel}
                 </label>
                 <textarea
+                  required
                   id="message"
-                  name="message"
+                  name="skilabod"
                   className={FIELD_CLASSES}
                 />
               </div>
