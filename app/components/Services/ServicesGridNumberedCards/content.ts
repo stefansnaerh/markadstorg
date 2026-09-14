@@ -5,7 +5,7 @@ export const services = {
   items: [
     {
       title: "Bókhald",
-      description: "Reglulegt bókhald, fært og uppfært á réttum tíma.",
+      description: "Almennt bókhald og reglulegar afstemmingar.",
     },
     {
       title: "VSK-skil",

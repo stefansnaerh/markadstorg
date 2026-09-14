@@ -1,7 +1,7 @@
 export const aboutUsImageLeft = {
   headline: "Um okkur",
   paragraphs: [
-    "Hjá Markaðstorgi færðu persónulega og faglega þjónustu sem byggir á reynslu, nákvæmni og góðu skipulagi. Við hjálpum fyrirtækjum og einstaklingum að halda utan um bókhaldið og skapa betri yfirsýn yfir fjármálin. Við leggjum áherslu á persónuleg samskipti og lausnir sem henta hverjum og einum",
+    "Hjá Markaðstorgi færðu persónulega og faglega þjónustu á sviði bókhalds, fjármála og reksturs. Við leggjum áherslu á áreiðanleika, nákvæmni og lausnir sem eru sniðnar að þörfum hverju sinni.",
   ],
   imageLabel: "Mynd af Birki Þór",
 };
