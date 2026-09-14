@@ -9,7 +9,7 @@ export const services = {
     },
     {
       title: "VSK-skil",
-      description: "Virðisaukaskattsskil á réttum gjalddaga.",
+      description: "Útreikningur og skil virðisaukaskatts.",
     },
     {
       title: "Launavinnslur",
